@@ -1,0 +1,67 @@
+[
+  {
+    "ID":"FirstName",
+    "Label":"Firts Name",
+    "Type":"input",
+    "Value":"",
+    "Required": "true",
+    "Control":"blur"
+  },
+  {
+    "ID":"LastName",
+    "Label":"Last Name",
+    "Type":"input",
+    "Value":"",
+    "Required": "true",
+    "Control":"submit"
+  },
+  {
+    "ID":"DOB",
+    "Label":"DOB",
+    "Type":"date",
+    "Value":"",
+    "Control":"submit"
+  },
+
+  {
+    "ID":"MobileNo",
+    "Label":"Mobile No",
+    "Type":"input",
+    "Value":"",
+    "Required": "true",
+    "Control":"submit"
+  },
+
+  {
+    "ID":"Email_ID",
+    "Label":"Email",
+    "Type":"input",
+    "Value":"",
+    "Required": "true",
+    "Control":"submit"
+  },
+
+  {
+    "ID":"Gender",
+    "Label":"Gender",
+    "Type":"radio",
+    "Value":"Male,Female"
+  },
+
+  {
+    "ID":"Adress",
+    "Label":"Adress",
+    "Type":"input",
+    "Value":"",
+    "Required": "true",
+    "Control":"submit"
+  },
+  {
+    "ID":"City",
+    "Label":"City",
+    "Type":"select",
+    "Value":"San Salvador,Santa Ana,Chalatenango,Opico",
+    "Required": "true",
+    "Control":"submit"
+  }
+]
