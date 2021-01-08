@@ -22,7 +22,7 @@ export class RegistrationFormComponent implements OnInit {
     this.httpClient.get('assets/D-form/DynamicForm.json').subscribe(data => {
       this.dynamicFormArray = data;
       this.createFormControl();
-      this.createListen();
+      this.createListener();
     });
   }
 
@@ -47,13 +47,12 @@ export class RegistrationFormComponent implements OnInit {
   }
 
 
-  createListen() {
-    this.registrationForm.get('FirstName')?.valueChanges.subscribe(data => {
+  createListener() {
+    const trigguer = this.dynamicFormArray.filter((control: any) => control.Triguer === true)[0];
+    this.registrationForm.get(trigguer.ID)?.valueChanges.subscribe(data => {
       console.log('cambio valor');
     })
   }
-
-
 
   showStatus(): void {
     if (this.registrationForm.valid) {

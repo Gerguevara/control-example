@@ -5,7 +5,8 @@
     "Type":"input",
     "Value":"",
     "Required": "true",
-    "Control":"blur"
+    "Control":"change",
+    "Triguer": true
   },
   {
     "ID":"LastName",
@@ -13,14 +14,16 @@
     "Type":"input",
     "Value":"",
     "Required": "true",
-    "Control":"submit"
+    "Control":"submit",
+    "Triguer": false
   },
   {
     "ID":"DOB",
     "Label":"DOB",
     "Type":"date",
     "Value":"",
-    "Control":"submit"
+    "Control":"submit",
+    "Triguer": false
   },
 
   {
@@ -29,7 +32,8 @@
     "Type":"input",
     "Value":"",
     "Required": "true",
-    "Control":"submit"
+    "Control":"submit",
+    "Triguer": false
   },
 
   {
@@ -38,14 +42,16 @@
     "Type":"input",
     "Value":"",
     "Required": "true",
-    "Control":"submit"
+    "Control":"submit",
+    "Triguer": false
   },
 
   {
     "ID":"Gender",
     "Label":"Gender",
     "Type":"radio",
-    "Value":"Male,Female"
+    "Value":"Male,Female",
+    "Triguer": false
   },
 
   {
@@ -54,7 +60,8 @@
     "Type":"input",
     "Value":"",
     "Required": "true",
-    "Control":"submit"
+    "Control":"submit",
+    "Triguer": false
   },
   {
     "ID":"City",
@@ -62,6 +69,7 @@
     "Type":"select",
     "Value":"San Salvador,Santa Ana,Chalatenango,Opico",
     "Required": "true",
-    "Control":"submit"
+    "Control":"submit",
+    "Triguer": false
   }
 ]
