@@ -5,7 +5,7 @@
     "Type":"input",
     "Value":"",
     "Required": "true",
-    "Control":"change",
+    "Control":"blur",
     "Triguer": true
   },
   {

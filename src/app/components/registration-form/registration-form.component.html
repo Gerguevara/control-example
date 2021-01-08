@@ -7,7 +7,6 @@
     </div>
 
     <section>
-
       <div class="col-12 mt-5">
         <p class="h3 mb-1">Values</p>
         {{registrationForm.value | json}}
@@ -18,15 +17,12 @@
         {{registrationForm.status}}
       </div>
 
-      <form class="mt-5"  [formGroup]="registrationForm"  (ngSubmit)="showStatus()">
+      <form class="mt-5" [formGroup]="registrationForm" (ngSubmit)="showStatus()">
         <div class="row form">
-
           <div class="col-12" *ngFor="let control of dynamicFormArray">
 
-
             <div [ngSwitch]="control.Type">
-
-              <!-- inpurts normales -->
+              <!-- inpurts simples -->
               <div *ngSwitchCase="'input'">
                 <div class="col-md-4">
                   <label>{{control.Label}}</label>
@@ -35,20 +31,16 @@
                   <input type="text" class="form-control" [formControlName]="control.ID">
                 </div>
               </div>
-
               <!-- radio buttons -->
               <div *ngSwitchCase="'radio'">
                 <div class="col-md-4">
                   <label>{{control.Label}}</label>
                 </div>
-
                 <label class="radio m-1" *ngFor="let val of control.Value.split(',')">
                   <input type="radio" name="{{control.ID}}" value="{{val}}" [formControlName]="control.ID">
                   {{val}}
                 </label>
               </div>
-
-
               <!-- datepickers -->
               <div *ngSwitchCase="'date'">
                 <div class="col-md-4">
@@ -58,7 +50,6 @@
                   <input type="date" class="form-control" [formControlName]="control.ID">
                 </div>
               </div>
-
               <!-- selects -->
               <div *ngSwitchCase="'select'">
                 <div class="col-md-4">
@@ -71,14 +62,11 @@
                   </select>
                 </div>
               </div>
-
-            </div>
+            </div> <!-- fin ngswitch -->
           </div>
-
         </div>
-
         <div class="mt-5 mb-5">
-          <button type="submit" class="btn btn-outline-success" >Submit</button>
+          <button type="submit" class="btn btn-outline-success">Submit</button>
         </div>
       </form>
     </section>
