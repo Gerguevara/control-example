@@ -1,0 +1,13 @@
+<div class="col-md-4 mb-3">
+  <label>Warehouse</label>
+</div>
+<span class="d-flex ">
+  <button class="btn btn-danger mr-1" type="button" (click)="sub()">-</button>
+      <p class="h4 mx-2">{{currentValue}}</p>
+  <button class="btn btn-danger ml-1" type="button" (click)="add()">+</button>
+</span>
+
+<div *ngIf="messages" class="mt-1">
+  <p class="text-danger">{{messages}}</p>
+</div>
+

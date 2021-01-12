@@ -13,26 +13,30 @@ export class RegistrationFormComponent implements OnInit, OnDestroy {
   dynamicFormArray: any;
   registrationForm!: FormGroup;
   triguerRef: Subscription | any;
-  constructor(private httpClient: HttpClient, private fb: FormBuilder) { }
+  private subscriptions: Subscription[] | any = [];
 
+
+
+  constructor(private httpClient: HttpClient, private fb: FormBuilder) { }
 
   ngOnInit(): void {
     // se incializa el formGroup vacio;
     this.registrationForm = this.fb.group({});
-
-    this.httpClient.get('assets/D-form/DynamicForm.json').subscribe(data => {
+    this.httpClient.get('http://localhost:3000/form').subscribe(data => {
       this.dynamicFormArray = data;
       this.createFormControl();
       this.createFormListener();
-    // this.createFormValidators();
+      // this.createFormValidators();
     });
   }
 
   createFormControl(): void {
     // recorre el array para ir creando los controles
     this.dynamicFormArray.forEach((element: any) => {
+
       if (element.Required) {
-        this.registrationForm.addControl(element.ID, new FormControl('', {
+
+        this.registrationForm.addControl(element.ID, new FormControl(element.Value, {
           validators: [Validators.required],
           updateOn: element.Control,
         }));
@@ -40,15 +44,29 @@ export class RegistrationFormComponent implements OnInit, OnDestroy {
         this.registrationForm.addControl(element.ID, new FormControl(''));
       }
     });
+
     console.log(this.registrationForm);
   }
 
 
   createFormListener() {
-    const trigguer = this.dynamicFormArray.filter((control: any) => control.Triguer === true)[0] || null;
-    this.triguerRef = this.registrationForm.get(trigguer.ID)?.valueChanges.subscribe(data => {
-      alert('Trigger input changed: ' + trigguer.Label)
-    });
+    const trigguers = this.dynamicFormArray.filter((control: any) => control.Triguer === true) || null;
+    // console.log('triguers',trigguers);
+    if (trigguers.length > 0 && trigguers != null) {
+
+      if (trigguers.control === 'blur' || 'chage') {
+
+        for (const triguer of trigguers) {
+          //console.log('trigguer id', triguer.ID)
+          this.subscriptions.push(
+            this.registrationForm.get(triguer.ID)?.valueChanges.subscribe(data => {
+              console.log('Trigger! of ', triguer.Label)
+            })
+          );
+        }
+
+      }
+    }
   }
 
   // testing validator
@@ -70,7 +88,11 @@ export class RegistrationFormComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.triguerRef.unsubscribe();
+    if (this.subscriptions.length > 0) {
+      for (const subscriton of this.subscriptions) {
+        subscriton.unsubcribe();
+      }
+    }
   }
 
 }

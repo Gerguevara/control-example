@@ -62,8 +62,18 @@
                   </select>
                 </div>
               </div>
+
+              <div *ngSwitchCase="'custom'">
+                <div class="col-md-6 mt-2">
+                  <app-custom-input [formControlName]="control.ID"></app-custom-input>
+                </div>
+              </div>
+
             </div> <!-- fin ngswitch -->
           </div>
+
+          <!-- custon -->
+
         </div>
         <div class="mt-5 mb-5">
           <button type="submit" class="btn btn-outline-success">Submit</button>
