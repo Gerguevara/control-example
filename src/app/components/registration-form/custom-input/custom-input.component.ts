@@ -15,7 +15,6 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 })
 export class CustomInputComponent implements OnInit, ControlValueAccessor {
 
-
   currentValue = 1;
   onChange = (_: any) => { };
   onTouch = () => { };
@@ -35,7 +34,7 @@ export class CustomInputComponent implements OnInit, ControlValueAccessor {
 
     this.currentValue = this.currentValue + 1;
     this.onTouch();
-    this.onChange(this.currentValue);
+    this.onChange(this.testing(this.currentValue));
   }
 
   sub() {
@@ -46,7 +45,7 @@ export class CustomInputComponent implements OnInit, ControlValueAccessor {
     }
     this.currentValue = this.currentValue - 1;
     this.onTouch();
-    this.onChange(this.currentValue);
+    this.onChange(this.testing(this.currentValue));
   }
 
   writeValue(value: number): void {
@@ -55,8 +54,10 @@ export class CustomInputComponent implements OnInit, ControlValueAccessor {
     }
   }
 
+  // Interface methods
   registerOnChange(fn: any): void {
     this.onChange = fn;
+
   }
 
   registerOnTouched(fn: any): void {
@@ -67,11 +68,18 @@ export class CustomInputComponent implements OnInit, ControlValueAccessor {
     this.isDisabled = isDisabled;
   }
 
+
+  //custon functions
   showMessage(mensaje: string) {
     this.messages = mensaje;
     setTimeout(() => {
       this.messages = null;
     }, 3000);
+  }
+
+  testing( value: number) {
+    console.log('value', value);
+    return value;
   }
 
 }

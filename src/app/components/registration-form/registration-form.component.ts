@@ -25,7 +25,7 @@ export class RegistrationFormComponent implements OnInit, OnDestroy {
     this.httpClient.get('http://localhost:3000/form').subscribe(data => {
       this.dynamicFormArray = data;
       this.createFormControl();
-      this.createFormListener();
+    //  this.createFormListener();
       // this.createFormValidators();
     });
   }
@@ -49,25 +49,25 @@ export class RegistrationFormComponent implements OnInit, OnDestroy {
   }
 
 
-  createFormListener() {
-    const trigguers = this.dynamicFormArray.filter((control: any) => control.Triguer === true) || null;
-    // console.log('triguers',trigguers);
-    if (trigguers.length > 0 && trigguers != null) {
+  // createFormListener() {
+  //   const trigguers = this.dynamicFormArray.filter((control: any) => control.Triguer === true) || null;
+  //   // console.log('triguers',trigguers);
+  //   if (trigguers.length > 0 && trigguers != null) {
 
-      if (trigguers.control === 'blur' || 'chage') {
+  //     if (trigguers.Control === 'blur' || 'change') {
 
-        for (const triguer of trigguers) {
-          //console.log('trigguer id', triguer.ID)
-          this.subscriptions.push(
-            this.registrationForm.get(triguer.ID)?.valueChanges.subscribe(data => {
-              console.log('Trigger! of ', triguer.Label)
-            })
-          );
-        }
+  //       for (const triguer of trigguers) {
+  //         //console.log('trigguer id', triguer.ID)
+  //         this.subscriptions.push(
+  //           this.registrationForm.get(triguer.ID)?.valueChanges.subscribe(data => {
+  //             console.log('Trigger! of ', triguer.Label)
+  //           })
+  //         );
+  //       }
 
-      }
-    }
-  }
+  //     }
+  //   }
+  // }
 
   // testing validator
   // createFormValidators() {
@@ -78,6 +78,11 @@ export class RegistrationFormComponent implements OnInit, OnDestroy {
   //     }
   //   }
   // }
+
+
+  fromTheSon() {
+    console.log('Hellow');
+  }
 
   showStatus(): void {
     if (this.registrationForm.valid) {

@@ -6,11 +6,13 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RegistrationFormComponent } from './components/registration-form/registration-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CustomInputComponent } from './components/registration-form/custom-input/custom-input.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RegistrationFormComponent
+    RegistrationFormComponent,
+    CustomInputComponent
   ],
   imports: [
     BrowserModule,
